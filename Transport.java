@@ -1,4 +1,5 @@
 public class Transport {
+    protected String name;
     protected String mode;
     protected double price;
     protected boolean isRental;
@@ -7,8 +8,9 @@ public class Transport {
     protected int maxPassengers;
     protected double avgSpeed;
 
-    public Transport(String mode, double price, boolean isRental, boolean isTicket, String pickup,
+    public Transport(String name, String mode, double price, boolean isRental, boolean isTicket, String pickup,
                      int maxPassengers, double avgSpeed) {
+        this.name = name;
         this.mode = mode;
         this.price = price;
         this.isRental = isRental;
