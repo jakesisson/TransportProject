@@ -82,6 +82,25 @@ public class Transport {
                 "Average Speed:", avgSpeed);
     }
 
+    public String multiPrice() {
+        String purchaseMethod;
+        String location_type;
+        if (isRental){
+            purchaseMethod = "Rental";
+            location_type = "Pickup:";
+        } else {
+            purchaseMethod = "Ticket";
+            location_type = "Departure:";
+        }
+
+        return String.format("%s\t%s\n%s\t%s\n%s\t%s\n%s\t%d\n%s\t%.2f",
+                "Vehicle:", this.name,
+                "Purchase Type:", purchaseMethod,
+                location_type, pickup,
+                "Maximum Passengers:", maxPassengers,
+                "Average Speed:", avgSpeed);
+    }
+
     @Override
     public String toString() {
         String purchaseMethod;

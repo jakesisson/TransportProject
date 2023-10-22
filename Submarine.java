@@ -4,15 +4,18 @@ public class Submarine extends WaterTransportation{
     private String scenery;
     private String warnings;
 
+    private String departureTime;
+
 
     public Submarine(String name, Boolean isRental, int maxPassengers, double price, String pickup,
                      double avgSpeed, boolean isInternational, boolean isRecreational, double maxDepth,
-                     double tripLength, String scenery, String warnings) {
+                     double tripLength, String scenery, String warnings, String departureTime) {
         super(name, isRental, maxPassengers, price, pickup, avgSpeed, isInternational, isRecreational);
         this.maxDepth = maxDepth;
         this.tripLength = tripLength;
         this.scenery = scenery;
         this.warnings = warnings;
+        this.departureTime = departureTime;
     }
 
     public double getMaxDepth() {
@@ -49,11 +52,20 @@ public class Submarine extends WaterTransportation{
 
     @Override
     public String toString() {
-        return String.format("%s\n%s\t%.2f\n%s\t%.2f%s\n%s\t%s\n%s\t%s",
+        return String.format("%s\n%s\t%s\n%s\t%.2f\n%s\t%.2f%s\n%s\t%s\n%s\t%s",
                 super.toString(),
+                "Departure Time:", departureTime,
                 "Max Depth:", maxDepth,
                 "Trip Length:", tripLength, " Hours",
                 "Underwater Scenery:", scenery,
                 "Warnings: ", warnings);
+    }
+
+    public String getDepartureTime() {
+        return departureTime;
+    }
+
+    public void setDepartureTime(String departureTime) {
+        this.departureTime = departureTime;
     }
 }

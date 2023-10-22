@@ -13,23 +13,27 @@ public class Ship extends WaterTransportation{
 
     private boolean isFerry;
 
+    private String departureTime;
+
 
     public Ship(String name, Boolean isRental, int maxPassengers, double price, String pickup,
                 double avgSpeed, boolean isInternational, boolean isRecreational,
-                String vehicleClass, double tripLength, boolean isDays, boolean isCruise, boolean isFerry) {
+                String vehicleClass, double tripLength, boolean isDays, boolean isCruise, boolean isFerry,
+                String departureTime) {
         super(name, isRental, maxPassengers, price, pickup, avgSpeed, isInternational, isRecreational);
         this.vehicleClass = vehicleClass;
         this.tripLength = tripLength;
         this.isDays = isDays;
         this.isCruise = isCruise;
         this.isFerry = isFerry;
+        this.departureTime = departureTime;
     }
 
     public Ship(String name, Boolean isRental, int maxPassengers, double price, String pickup,
                 double avgSpeed, boolean isInternational, boolean isRecreational,
                 String vehicleClass, double tripLength, boolean isDays, boolean isCruise, boolean isFerry,
                 String destination, boolean allInclusive, String stops, int maxPerRoom,
-                double drinkTicketPrice) {
+                double drinkTicketPrice, String departureTime) {
         super(name, isRental, maxPassengers, price, pickup, avgSpeed, isInternational, isRecreational);
         this.vehicleClass = vehicleClass;
         this.tripLength = tripLength;
@@ -41,6 +45,7 @@ public class Ship extends WaterTransportation{
         this.stops = stops;
         this.maxPerRoom = maxPerRoom;
         this.drinkTicketPrice = drinkTicketPrice;
+        this.departureTime = departureTime;
 
     }
 
@@ -141,8 +146,9 @@ public class Ship extends WaterTransportation{
             inclusive = "Separate Purchases Required";
         }
         if (isFerry) {
-            return String.format("%s\n%s\t%s\n%s\t%s\n%s\t%s%s\n%s",
+            return String.format("%s\n%s\t%s\n%s\t%s\n%s\t%s\n%s\t%s%s\n%s",
                     super.toPartialString(),
+                    "Departure Time:", departureTime,
                     "Vehicles per Ticket:", super.getMaxPassengers(),
                     "Destination:", destination,
                     "Trip Length:", tripLength, " Hours",
@@ -150,8 +156,9 @@ public class Ship extends WaterTransportation{
                     );
         } else if (isCruise) {
             if (buyDrinkTicket) {
-                return String.format("%s\n%s\t%s\n%s\t%s\n%s\t%s\t%s\t%s\n%s\t%.2f%s\n%s\t%s\n%s\t%d",
+                return String.format("%s\n%s\t%s\n%s\t%s\n%s\t%s\n%s\t%s\t%s\t%s\n%s\t%.2f%s\n%s\t%s\n%s\t%d",
                         super.toString(),
+                        "Departure Time:", departureTime,
                         "Ship Class:", vehicleClass,
                         "Additional Purchases:", inclusive,
                         "Final Destination:", destination,
@@ -160,8 +167,9 @@ public class Ship extends WaterTransportation{
                         "Drink Ticket Price:", drinkTicketPrice,
                         "Max Passengers Per Room:", maxPerRoom);
             } else {
-                return String.format("%s\n%s\t%s\n%s\t%s\n%s\t%s\n%s\t%.2f%s\n%s\t%d",
+                return String.format("%s\n%s\t%s\n%s\t%s\n%s\t%s\n%s\t%s\n%s\t%.2f%s\n%s\t%d",
                         super.toString(),
+                        "Departure Time:", departureTime,
                         "Additional Purchases:", inclusive,
                         "Final Destination:", destination,
                         "Destination Stops" , stops,
@@ -170,11 +178,20 @@ public class Ship extends WaterTransportation{
             }
 
         } else {
-            return String.format("%s\n%s\t%s\n%s\t%s\n%s\t%.2f%s",
+            return String.format("%s\n%s\t%s\n%s\t%s\n%s\t%s\n%s\t%.2f%s",
                     super.toString(),
+                    "Departure Time:", departureTime,
                     "Ship Class:", vehicleClass,
                     "Destination:", destination,
                     "Trip Length:", tripLength, " Hours");
         }
+    }
+
+    public String getDepartureTime() {
+        return departureTime;
+    }
+
+    public void setDepartureTime(String departureTime) {
+        this.departureTime = departureTime;
     }
 }
