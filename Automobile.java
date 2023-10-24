@@ -5,9 +5,9 @@ public class Automobile extends LandTransportation{
 
 
     public Automobile(String name, Boolean isRental, int maxPassengers, double price, String pickup, double avgSpeed,
-                      boolean isRecreational, boolean is4wheel, boolean isElectric, boolean isDiesel, String vehicleClass,
-                      String color) {
-        super(name, isRental, maxPassengers, price, pickup, avgSpeed, isRecreational, is4wheel, isElectric, isDiesel);
+                      boolean isRecreational, boolean is4wheel, boolean isElectric, boolean isDiesel, boolean isGasoline,
+                      String vehicleClass, String color) {
+        super(name, isRental, maxPassengers, price, pickup, avgSpeed, isRecreational, is4wheel, isElectric, isDiesel, isGasoline);
         this.color = color;
         this.vehicleClass = vehicleClass;
     }
@@ -44,12 +44,12 @@ public class Automobile extends LandTransportation{
     @Override
     public String toString(){
         if (rentalDays == 0) {
-            return String.format("%s\n%s\t%s\n%s\t%s",
+            return String.format("%s\n%-50s%-50s\n%-50s%-50s",
                     super.toString(),
                     "Vehicle Class:", vehicleClass,
                     "Color:", color);
         } else {
-            return String.format("%s\n%s\t%s\n%s\t%s\n%s\t%d",
+            return String.format("%s\n%-50s%-50s\n%-50s%-50s\n%-50s%-50d",
                     super.toString(),
                     "Vehicle Class:", vehicleClass,
                     "Color:", color,

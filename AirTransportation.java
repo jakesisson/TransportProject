@@ -2,12 +2,15 @@ public class AirTransportation extends Transport{
     private boolean isRecreational;
     private boolean isInternational;
 
+    private double avgSpeed;
+
 
     public AirTransportation(String name, Boolean isRental, int maxPassengers, double price, String pickup,
                              double avgSpeed, boolean isRecreational, boolean isInternational) {
-        super(name, isRental, maxPassengers, price, pickup, avgSpeed);
+        super(name, isRental, maxPassengers, price, pickup);
         this.isInternational = isInternational;
         this.isRecreational = isRecreational;
+        this.avgSpeed = avgSpeed;
     }
 
     public boolean isRecreational() {
@@ -41,8 +44,9 @@ public class AirTransportation extends Transport{
         } else {
             passport = "Not Required";
         }
-        return String.format("%s\n%s\t%s\n%s\t%s",
+        return String.format("%s\n%-50s%-50s\n%-50s%-50s\n%-50s%-50s",
                 super.multiPrice(),
+                "Average Speed:", super.mod_number(false,avgSpeed,"Knots"),
                 "Passport Required:", passport,
                 "Purpose:", purpose);
     }
@@ -63,9 +67,18 @@ public class AirTransportation extends Transport{
         } else {
             passport = "Not Required";
         }
-        return String.format("%s\n%s\t%s\n%s\t%s",
+        return String.format("%s\n%-50s%-50s\n%-50s%-50s\n%-50s%-50s",
                 super.toString(),
+                "Average Speed:", super.mod_number(false,avgSpeed,"Knots"),
                 "Passport Required:", passport,
                 "Purpose:", purpose);
+    }
+
+    public double getAvgSpeed() {
+        return avgSpeed;
+    }
+
+    public void setAvgSpeed(double avgSpeed) {
+        this.avgSpeed = avgSpeed;
     }
 }

@@ -5,9 +5,9 @@ public class Bike extends LandTransportation {
 
 
     public Bike(String name, Boolean isRental, int maxPassengers, double price, String pickup, double avgSpeed,
-                boolean isRecreational, boolean is4wheel, boolean isElectric, boolean isDiesel, boolean isMotorcycle,
+                boolean isRecreational, boolean is4wheel, boolean isElectric, boolean isDiesel, boolean isGasoline, boolean isMotorcycle,
                 String color) {
-        super(name, isRental, maxPassengers, price, pickup, avgSpeed, isRecreational, is4wheel, isElectric, isDiesel);
+        super(name, isRental, maxPassengers, price, pickup, avgSpeed, isRecreational, is4wheel, isElectric, isDiesel, isGasoline);
         this.isMotorcycle = isMotorcycle;
         this.color = color;
     }
@@ -49,12 +49,12 @@ public class Bike extends LandTransportation {
             bikeType = "Bicycle";
         }
         if (rentalDays == 0) {
-            return String.format("%s\n%s\t%s\n%s\t%s",
+            return String.format("%s\n%-50s%-50s\n%-50s%-50s",
                     super.toString(),
                     "Bike Type:", bikeType,
                     "Color:", this.color);
         } else {
-            return String.format("%s\n%s\t%s\n%s\t%s\n%s\t%d",
+            return String.format("%s\n%-50s%-50s\n%-50s%-50s\n%-50s%-50d",
                     super.toString(),
                     "Bike Type:", bikeType,
                     "Color:", this.color,

@@ -79,20 +79,22 @@ public class Plane extends AirTransportation{
             fcAvailable = "Unavailable";
         }
         if (firstClass) {
-            return String.format("%s\n%s\t%s\n%s\t%s\n%s\t%s\n%s\t%.2f\n%s\t%.2f",
+            return String.format("%s\n%-50s%-50s\n%-50s%-50s\n%-50s%-50s\n%-50s%-50s\n%-50s%-50s\n%-50s%-50s",
                     super.multiPrice(),
                     "Destination", destination,
                     "Departure Time:", departureTime,
                     "First Class Tickets:", fcAvailable,
-                    "Coach Price:", super.getPrice(),
-                    "First Class Price:", firstClassPrice);
+                    "Coach Price:", super.mod_number(true,super.getPrice(),"per ticket"),
+                    "First Class Price:", super.mod_number(true,firstClassPrice,"per ticket"),
+                    "Flight Time:", super.mod_number(false,flightTime,"Hours"));
         } else {
-            return String.format("%s\n%s\t%s\n%s\t%s\n%s\t%s\n%s\t%.2f",
+            return String.format("%s\n%-50s%-50s\n%-50s%-50s\n%-50s%-50s\n%-50s%-50s\n%-50s%-50s",
                     super.multiPrice(),
                     "Destination", destination,
                     "Departure Time:", departureTime,
                     "First Class Tickets:", fcAvailable,
-                    "Coach Price:", super.getPrice());
+                    "Coach Price:", super.mod_number(true,super.getPrice(),"per ticket"),
+                    "Flight Time:", super.mod_number(false,flightTime,"Hours"));
         }
 
     }

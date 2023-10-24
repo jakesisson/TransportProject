@@ -59,11 +59,11 @@ public class HotAirBalloon extends AirTransportation{
 
     @Override
     public String toString() {
-        return String.format("%s\n%s\t%s\n%s\t%s\n%s\t%.2f",
+        return String.format("%s\n%-50s%-50s\n%-50s%-50s\n%-50s%-50s",
                 super.toString(),
                 "Destination:", destination,
                 "Departure Time:", departureTime,
-                "Flight Time:", flightTime);
+                "Flight Time:", super.mod_number(false,flightTime,"Hours"));
 
     }
 }

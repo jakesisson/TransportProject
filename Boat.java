@@ -32,11 +32,11 @@ public class Boat extends WaterTransportation{
     @Override
     public String toString(){
         if (rentalDays == 0) {
-            return String.format("%s\n%s\t%s",
+            return String.format("%s\n%-50s%-50s",
                     super.toString(),
                     "Vehicle Class:", vehicleClass);
         } else {
-            return String.format("%s\n%s\t%s\n%s\t%d",
+            return String.format("%s\n%-50s%-50s\n%-50s%-50d",
                     super.toString(),
                     "Boat Class:", vehicleClass,
                     "Rental Days:", rentalDays);

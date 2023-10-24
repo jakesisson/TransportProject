@@ -137,6 +137,17 @@ public class Ship extends WaterTransportation{
         this.buyDrinkTicket = buyDrinkTicket;
     }
 
+    private String tripString(double tripLength) {
+        String s = Double.toString(tripLength);
+        if (isDays){
+            s = s + " Days";
+        } else {
+            s = s + " Hours";
+        }
+
+        return s;
+    }
+
     @Override
     public String toString() {
         String inclusive = null;
@@ -146,44 +157,44 @@ public class Ship extends WaterTransportation{
             inclusive = "Separate Purchases Required";
         }
         if (isFerry) {
-            return String.format("%s\n%s\t%s\n%s\t%s\n%s\t%s\n%s\t%s%s\n%s",
+            return String.format("%s\n%-50s%-50s\n%-50s%-50s\n%-50s%-50s\n%-50s%-50s\n%s",
                     super.toPartialString(),
                     "Departure Time:", departureTime,
                     "Vehicles per Ticket:", super.getMaxPassengers(),
                     "Destination:", destination,
-                    "Trip Length:", tripLength, " Hours",
+                    "Trip Length:", tripString(tripLength),
                     "Note: Only standard vehicles allowed. Any vehicles over 2 axles require special reservation."
                     );
         } else if (isCruise) {
             if (buyDrinkTicket) {
-                return String.format("%s\n%s\t%s\n%s\t%s\n%s\t%s\n%s\t%s\t%s\t%s\n%s\t%.2f%s\n%s\t%s\n%s\t%d",
+                return String.format("%s\n%-50s%s-50\n%-50s%-50s\n%-50s%-50s\n%-50s%-50s\n%-50s%-50s\n%-50s%-50s\n%-50s%-50s\n%-50s%-50d",
                         super.toString(),
                         "Departure Time:", departureTime,
                         "Ship Class:", vehicleClass,
                         "Additional Purchases:", inclusive,
                         "Final Destination:", destination,
                         "Destination Stops" , stops,
-                        "Trip Length:", tripLength, " Days",
-                        "Drink Ticket Price:", drinkTicketPrice,
+                        "Trip Length:", tripString(tripLength),
+                        "Drink Ticket Price:", super.mod_number(true,drinkTicketPrice,"per guest"),
                         "Max Passengers Per Room:", maxPerRoom);
             } else {
-                return String.format("%s\n%s\t%s\n%s\t%s\n%s\t%s\n%s\t%s\n%s\t%.2f%s\n%s\t%d",
+                return String.format("%s\n%-50s%-50s\n%-50s%-50s\n%-50s%-50s\n%-50s%-50s\n%-50s%-50s\n%-50s%-50d",
                         super.toString(),
                         "Departure Time:", departureTime,
                         "Additional Purchases:", inclusive,
                         "Final Destination:", destination,
                         "Destination Stops" , stops,
-                        "Trip Length:", tripLength, " Days",
+                        "Trip Length:", tripString(tripLength),
                         "Max Passengers Per Room:", maxPerRoom);
             }
 
         } else {
-            return String.format("%s\n%s\t%s\n%s\t%s\n%s\t%s\n%s\t%.2f%s",
+            return String.format("%s\n%-50s%-50s\n%-50s%-50s\n%-50s%-50s\n%-50s%-50s",
                     super.toString(),
                     "Departure Time:", departureTime,
                     "Ship Class:", vehicleClass,
                     "Destination:", destination,
-                    "Trip Length:", tripLength, " Hours");
+                    "Trip Length:", tripString(tripLength));
         }
     }
 

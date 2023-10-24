@@ -50,13 +50,19 @@ public class Submarine extends WaterTransportation{
         this.warnings = warnings;
     }
 
+    private String tripString(double tripLength) {
+
+        String s = Double.toString(tripLength) + " Hours";
+        return s;
+    }
+
     @Override
     public String toString() {
-        return String.format("%s\n%s\t%s\n%s\t%.2f\n%s\t%.2f%s\n%s\t%s\n%s\t%s",
+        return String.format("%s\n%-50s%-50s\n%-50s%-50s\n%-50s%-50s\n%-50s%-50s\n%-50s%-50s",
                 super.toString(),
                 "Departure Time:", departureTime,
-                "Max Depth:", maxDepth,
-                "Trip Length:", tripLength, " Hours",
+                "Max Depth:", super.mod_number(false,maxDepth,"Meters"),
+                "Trip Length:", super.mod_number(false,tripLength, "Hours"),
                 "Underwater Scenery:", scenery,
                 "Warnings: ", warnings);
     }

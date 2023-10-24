@@ -4,17 +4,16 @@ public class Transport {
     private int maxPassengers;
     private double price;
     private String pickup;
-    private double avgSpeed;
 
-    public Transport(String name, Boolean isRental, int maxPassengers, double price, String pickup,
-                     double avgSpeed) {
+
+    public Transport(String name, Boolean isRental, int maxPassengers, double price, String pickup) {
         this.name = name;
         this.isRental = isRental;
         this.maxPassengers = maxPassengers;
         this.price = price;
         this.pickup = pickup;
-        this.avgSpeed = avgSpeed;
     }
+
 
     public String getPickup() {
         return pickup;
@@ -22,14 +21,6 @@ public class Transport {
 
     public void setPickup(String pickup) {
         this.pickup = pickup;
-    }
-
-    public double getAvgSpeed() {
-        return avgSpeed;
-    }
-
-    public void setAvgSpeed(double avgSpeed) {
-        this.avgSpeed = avgSpeed;
     }
 
     public double getPrice() {
@@ -64,6 +55,14 @@ public class Transport {
         this.name = name;
     }
 
+    public String mod_number(boolean dollar, double number, String units) {
+        if (dollar) {
+            return "$" + Double.toString(number) + " " + units;
+        } else {
+            return Double.toString(number) + " " + units;
+        }
+    }
+
     public String toPartialString() {
         String purchaseMethod;
         String location_type;
@@ -74,12 +73,11 @@ public class Transport {
             purchaseMethod = "Ticket";
             location_type = "Departure:";
         }
-        return String.format("%s\t%s\n%s\t%s\n%s\t%s\n%s\t%.2f\n%s\t%.2f",
+        return String.format("%-50s%-50s\n%-50s%-50s\n%-50s%-50s\n%-50s%-50.2f",
                 "Vehicle:", this.name,
                 "Purchase Type:", purchaseMethod,
                 location_type, pickup,
-                "Price:", price,
-                "Average Speed:", avgSpeed);
+                "Price:", price);
     }
 
     public String multiPrice() {
@@ -93,32 +91,36 @@ public class Transport {
             location_type = "Departure:";
         }
 
-        return String.format("%s\t%s\n%s\t%s\n%s\t%s\n%s\t%d\n%s\t%.2f",
+        return String.format("%-50s%-50s\n%-50s%-50s\n%-50s%-50s\n%-50s%-50d",
                 "Vehicle:", this.name,
                 "Purchase Type:", purchaseMethod,
                 location_type, pickup,
-                "Maximum Passengers:", maxPassengers,
-                "Average Speed:", avgSpeed);
+                "Maximum Passengers:", maxPassengers);
     }
+
+
 
     @Override
     public String toString() {
         String purchaseMethod;
         String location_type;
+        String pricing;
         if (isRental){
             purchaseMethod = "Rental";
             location_type = "Pickup:";
+            pricing = mod_number(true,price,"per day");
+
         } else {
             purchaseMethod = "Ticket";
             location_type = "Departure:";
+            pricing = mod_number(true,price,"per ticket");
         }
 
-        return String.format("%s\t%s\n%s\t%s\n%s\t%s\n%s\t%.2f\n%s\t%d\n%s\t%.2f",
+        return String.format("%-50s%-50s\n%-50s%-50s\n%-50s%-50s\n%-50s%-50s\n%-50s%-50d",
                 "Vehicle:", this.name,
                 "Purchase Type:", purchaseMethod,
                 location_type, pickup,
-                "Price:", price,
-                "Maximum Passengers:", maxPassengers,
-                "Average Speed:", avgSpeed);
+                "Price:", pricing,
+                "Maximum Passengers:", maxPassengers);
     }
 }

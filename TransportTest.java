@@ -9,7 +9,7 @@ public class TransportTest {
         //                      boolean isRecreational, boolean is4wheel, boolean isElectric, boolean isDiesel, String vehicleClass,
         //                      String color)
         Automobile tahoe = new Automobile("Tahoe", true, 5, 75.99, "Hertz-Wilmington",
-                60, false, true,false,false,"SUV","Black");
+                60, false, true,false,false, true,"SUV","Black");
 
         transports.add(tahoe);
         //Bike(String name, Boolean isRental, int maxPassengers, double price, String pickup, double avgSpeed,
@@ -17,7 +17,7 @@ public class TransportTest {
         //                String color)
 
         Bike dirtBike = new Bike("Dirt bike", true,1, 49.99, "OffRoad Rentals",
-                45, true, false, false,false,true,"Blue");
+                45, true, false, false,false, true,true,"Blue");
 
         transports.add(dirtBike);
 
@@ -31,7 +31,7 @@ public class TransportTest {
         //               boolean isRecreational, boolean is4wheel, boolean isElectric, boolean isDiesel,
         //               String destination, double tripLength, String departureTime)
         Bus greyHound = new Bus("Greyhound A", false, 45, 28.99,"Grehound Wilmington",
-                55, false,false,false,true,"Raleigh",
+                55, false,false,false,true, false,"Raleigh",
                 2.5, "7:00 AM");
 
         transports.add(greyHound);
@@ -99,7 +99,10 @@ public class TransportTest {
         //                 boolean isRecreational, boolean is4wheel, boolean isElectric, boolean isDiesel, double tripLength,
         //                 String destination, int perCar, String departureTime)
 
-        Train amtrak = new Train("Amtrak 57", false, 225, 57.99, "Amtrak Raleigh", 125, false,false,true,false,2.5, "Charlotte, NC", 20, "11:30 AM");
+        Train amtrak = new Train("Amtrak 57", false, 225, 57.99,
+                "Amtrak Raleigh", 125, false,false,true,true, false,
+                2.5, "Charlotte, NC", 20, "11:30 AM");
+
 
         transports.add(amtrak);
 

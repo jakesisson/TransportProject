@@ -8,9 +8,9 @@ public class Train extends LandTransportation {
 
 
     public Train(String name, Boolean isRental, int maxPassengers, double price, String pickup, double avgSpeed,
-                 boolean isRecreational, boolean is4wheel, boolean isElectric, boolean isDiesel, double tripLength,
+                 boolean isRecreational, boolean is4wheel, boolean isElectric, boolean isDiesel, boolean isGasoline, double tripLength,
                  String destination, int perCar, String departureTime) {
-        super(name, isRental, maxPassengers, price, pickup, avgSpeed, isRecreational, is4wheel, isElectric, isDiesel);
+        super(name, isRental, maxPassengers, price, pickup, avgSpeed, isRecreational, is4wheel, isElectric, isDiesel, isGasoline);
         this.tripLength = tripLength;
         this.destination = destination;
         this.perCar = perCar;
@@ -60,11 +60,11 @@ public class Train extends LandTransportation {
 
     @Override
     public String toString(){
-        return String.format("%s\n%s\t%s\n%s\t%s\n%s\t%.2f\n%s\t%d\n%s\t%d",
+        return String.format("%s\n%-50s%-50s\n%-50s%-50s\n%-50s%-50s\n%-50s%-50d\n%-50s%-50d",
                 super.toString(),
                 "Destination:", this.destination,
                 "Departure Time:", this.departureTime,
-                "Length of Trip:", this.tripLength,
+                "Length of Trip:", super.mod_number(false,tripLength,"Hours"),
                 "Available Cars:", this.numCars,
                 "Passengers Per Car:", this.perCar);
     }
