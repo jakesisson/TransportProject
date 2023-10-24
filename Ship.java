@@ -18,7 +18,7 @@ public class Ship extends WaterTransportation{
 
     public Ship(String name, Boolean isRental, int maxPassengers, double price, String pickup,
                 double avgSpeed, boolean isInternational, boolean isRecreational,
-                String vehicleClass, double tripLength, boolean isDays, boolean isCruise, boolean isFerry,
+                String vehicleClass, double tripLength, boolean isDays, boolean isCruise, boolean isFerry, String destination,
                 String departureTime) {
         super(name, isRental, maxPassengers, price, pickup, avgSpeed, isInternational, isRecreational);
         this.vehicleClass = vehicleClass;
@@ -27,6 +27,7 @@ public class Ship extends WaterTransportation{
         this.isCruise = isCruise;
         this.isFerry = isFerry;
         this.departureTime = departureTime;
+        this.destination = destination;
     }
 
     public Ship(String name, Boolean isRental, int maxPassengers, double price, String pickup,
@@ -157,10 +158,11 @@ public class Ship extends WaterTransportation{
             inclusive = "Separate Purchases Required";
         }
         if (isFerry) {
-            return String.format("%s\n%-50s%-50s\n%-50s%-50s\n%-50s%-50s\n%-50s%-50s\n%s",
+            return String.format("%s\n%-50s%-50s\n%-50s%-50s\n%-50s%-50s\n%-50s%-50s\n%-50s%-50s\n%s",
                     super.toPartialString(),
                     "Departure Time:", departureTime,
-                    "Vehicles per Ticket:", super.getMaxPassengers(),
+                    "Max Vehicles Per Ferry", super.getMaxPassengers(),
+                    "Vehicles per Ticket:", "1",
                     "Destination:", destination,
                     "Trip Length:", tripString(tripLength),
                     "Note: Only standard vehicles allowed. Any vehicles over 2 axles require special reservation."

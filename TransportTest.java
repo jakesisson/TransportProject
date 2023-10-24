@@ -17,7 +17,7 @@ public class TransportTest {
         //                String color)
 
         Bike dirtBike = new Bike("Dirt bike", true,1, 49.99, "OffRoad Rentals",
-                45, true, false, false,false, true,true,"Blue");
+                45, true, true, false,false, true,true,"Blue");
 
         transports.add(dirtBike);
 
@@ -105,6 +105,17 @@ public class TransportTest {
 
 
         transports.add(amtrak);
+
+        //Ship(String name, Boolean isRental, int maxPassengers, double price, String pickup,
+        //                double avgSpeed, boolean isInternational, boolean isRecreational,
+        //                String vehicleClass, double tripLength, boolean isDays, boolean isCruise, boolean isFerry,
+        //                String departureTime)
+
+        Ship ferry = new Ship("Southport Ferry", false, 50, 20.00, "Southport, NC",
+                17, false, false, "Ferry", 0.5,
+                false, false, true, "Bald Head Island", "7:00 AM");
+
+        transports.add(ferry);
 
         System.out.println("All Transports");
         System.out.println("-".repeat(60));

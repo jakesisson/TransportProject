@@ -57,7 +57,8 @@ public class Transport {
 
     public String mod_number(boolean dollar, double number, String units) {
         if (dollar) {
-            return "$" + Double.toString(number) + " " + units;
+            String amount = String.format("%.2f", number);
+            return "$" + amount + " " + units;
         } else {
             return Double.toString(number) + " " + units;
         }
@@ -66,18 +67,22 @@ public class Transport {
     public String toPartialString() {
         String purchaseMethod;
         String location_type;
+        String pricing;
         if (isRental){
             purchaseMethod = "Rental";
             location_type = "Pickup:";
+            pricing = mod_number(true,price,"per day");
+
         } else {
             purchaseMethod = "Ticket";
             location_type = "Departure:";
+            pricing = mod_number(true,price,"per ticket");
         }
-        return String.format("%-50s%-50s\n%-50s%-50s\n%-50s%-50s\n%-50s%-50.2f",
+        return String.format("%-50s%-50s\n%-50s%-50s\n%-50s%-50s\n%-50s%-50s",
                 "Vehicle:", this.name,
                 "Purchase Type:", purchaseMethod,
                 location_type, pickup,
-                "Price:", price);
+                "Price:", pricing);
     }
 
     public String multiPrice() {
