@@ -26,76 +26,7 @@ Boat - Rental or Ticket (Yacht, Sailboat, Speedboat, PartyBoat, etc)
 Ship - Ticket
 Submarine - Ticket 
 
-Format of constructor:
-public Automobile(String name, String mode, double price, boolean isRental, boolean isTicket, String pickup, int maxPassengers, double avgSpeed) {
-        super(mode, price, isRental, isTicket, pickup, maxPassengers, avgSpeed);
-        this.name = name;
-    }
 
-Level 1 Subclass LandTransport inherit all class variables from Transport and act as a division of mode of travel
-
-format of constructor:
-public LandTransport(String mode, double price, boolean isRental, boolean isTicket, String pickup, int maxPassengers, double avgSpeed) {
-        super(mode, price, isRental, isTicket, pickup, maxPassengers, avgSpeed);
-    }
-No specific need for class specific variables
-
-Superclass Transport variables:
-    protected String mode;
-    protected double price;
-    protected boolean isRental;
-    protected boolean isTicket;
-    protected String pickup;
-    protected int maxPassengers;
-    protected double avgSpeed;
-
-format of constructor:
-public Transport(String mode, double price, boolean isRental, boolean isTicket, String pickup,
-                     int maxPassengers, double avgSpeed) {
-        this.mode = mode;
-        this.price = price;
-        this.isRental = isRental;
-        this.isTicket = isTicket;
-        this.pickup = pickup;
-        this.maxPassengers = maxPassengers;
-        this.avgSpeed = avgSpeed;
-    }
-
-
-Example of object creation: Automobile tahoe = new Automobile("Tahoe", "Land", 75.25, true, false, "Wilmington - Hertz", 5, 70);
-
-
-getters and setters for each class, @override toString for each for polymorphism. Needs to be modified to display in a table format
-
-Write the code for each class.
-
-Create a driver file, WTCLastName1LastName2LastName3.java, with at least one instance of each class from the bottom level of your hierarchy and implement a solution to the following problem. Your solution must use polymorphism and you should identify where it is being used in the program.
-
- -Create each object and add to Array of Transport methods
- -Get user input (Try, Catch if not Land, Air, or Water)
- For each object in Array, If Transport.getmode == user input display to table
- Transport Options
- Mode of Transport (Land)
- ------------------------------------(repeat to length of max formatted string)
- Automobiles: (get type)
- ------------------------------------
- Vehicle  Passengers  Price    Rental or Ticket  Pickup Location
- ------------------------------------------------------------
- Tahoe    5           $75.25   Rental            Wilm-hertz
-
- Trains:
- ----------------------
- Buses:
- ----------------------
- Bikes:
- ----------------------
- Repeat for each landTransport option
-
- Get user input for name of transport.
-Get user input of number of passengers 
-Total Price (Rental price stays the same, ticket price x passengers for tickets. Method in class getTotal())
-Edit toString method to display all travel instructions.
- 
 
 The Wilmington Travel Center needs a program to do the following:
 
